@@ -46,12 +46,12 @@ $ dig cloudflare.com A +short
 104.16.132.229                 # no rule matched, real dig ran
 ```
 
-## Codex and Claude apps
+## Codex and Claude apps, and Pi agent
 
 Set the agents in `trustmebro.toml`:
 
 ```toml
-activate = ["codex", "claude"]
+activate = ["codex", "claude", "pi"]
 ```
 
 If you already have a config, install directly:
@@ -88,7 +88,7 @@ trustmebro uninstall
 trustmebro. Config lookup starts in the working directory and searches upward.
 
 ```toml
-activate = ["codex", "claude"]               # optional automatic activation
+activate = ["codex", "claude", "pi"]         # optional automatic activation
 default = "passthrough"                       # or "reject"
 log = "~/.local/state/trustmebro/log.jsonl"   # one JSON line per call
 
@@ -112,7 +112,7 @@ The first matching rule wins. Every matcher on that rule must pass.
 
 | Field | |
 |---|---|
-| `activate` | `codex`, `claude`, or an array containing both. Optional. |
+| `activate` | `codex`, `claude`, `pi`, or an array containing them. Optional. |
 | `name` | Required, unique. |
 | `command` | Shim it applies to. `*` or omitted matches any. |
 | `match` | Case-insensitive glob over the arguments. |

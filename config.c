@@ -390,8 +390,10 @@ static int build_config(struct raw *r, struct config *cfg, struct errbuf *e)
 			cfg->activate |= ACTIVATE_CODEX;
 		else if (!strcmp(name, "claude"))
 			cfg->activate |= ACTIVATE_CLAUDE;
+		else if (!strcmp(name, "pi"))
+			cfg->activate |= ACTIVATE_PI;
 		else
-			err_add(e, "`activate` entry `%s` must be codex or claude", name);
+			err_add(e, "`activate` entry `%s` must be codex, claude, or pi", name);
 	}
 
 	cfg->rules = r->rules;

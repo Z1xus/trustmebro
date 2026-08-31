@@ -12,9 +12,9 @@
 #include <unistd.h>
 
 static const char STARTER[] =
-"# Also activate for commands run by local Codex and Claude sessions.\n"
+"# Also activate for commands run by local Codex, Claude, and Pi sessions.\n"
 "# Use enable and disable to toggle the command links.\n"
-"activate = [\"codex\", \"claude\"]\n"
+"activate = [\"codex\", \"claude\", \"pi\"]\n"
 "\n"
 "# Rules apply in order and the first match wins.\n"
 "\n"
@@ -768,7 +768,7 @@ static int agent_enable(const char *cfgarg)
 	if (load_checked(path, &cfg) != 0)
 		return 1;
 	if (!cfg.activate) {
-		fprintf(stderr, "trustmebro: enable needs `activate = \"codex\"`, `activate = \"claude\"`, or both\n");
+		fprintf(stderr, "trustmebro: enable needs `activate` with codex, claude, or pi\n");
 		return 1;
 	}
 
@@ -1117,6 +1117,8 @@ static int cmd_check(int argc, char **argv)
 		printf(" codex");
 	if (cfg.activate & ACTIVATE_CLAUDE)
 		printf(" claude");
+	if (cfg.activate & ACTIVATE_PI)
+		printf(" pi");
 	if (!cfg.activate)
 		printf(" (run only)");
 	printf("\n");

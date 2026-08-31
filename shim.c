@@ -340,11 +340,14 @@ static unsigned agent_activation(void)
 	const char *thread = getenv("CODEX_THREAD_ID");
 	const char *session = getenv("CODEX_SESSION_ID");
 	const char *claude = getenv("CLAUDECODE");
+	const char *pi = getenv("PI_CODING_AGENT");
 
 	if ((thread && *thread) || (session && *session))
 		active |= ACTIVATE_CODEX;
 	if (claude && !strcmp(claude, "1"))
 		active |= ACTIVATE_CLAUDE;
+	if (pi && !strcmp(pi, "true"))
+		active |= ACTIVATE_PI;
 	return active;
 }
 

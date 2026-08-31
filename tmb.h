@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#define TMB_VERSION "0.2.0"
+#define TMB_VERSION "0.3.0"
 
 /* fail closed: a broken config must never fall back to the real command */
 #define TMB_EXIT_CONFIG 78
@@ -18,6 +18,7 @@ enum action {
 enum activation {
 	ACTIVATE_CODEX  = 1u << 0,
 	ACTIVATE_CLAUDE = 1u << 1,
+	ACTIVATE_PI     = 1u << 2,
 };
 
 struct rule {
